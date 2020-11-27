@@ -6,7 +6,7 @@ export default function Home() {
   }, [])
   return (
     <div>
-      <h1>I'm INDEXER</h1>
+      <h1>I'm INDEXERS</h1>
     </div>
   )
 }
