@@ -8,7 +8,7 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
 
   const { token } = req.body
 
-  const { admin } = jwt.verify(token, KEY) as { key: string, value: string }
+  const { admin } = jwt.verify(token, KEY) as { [key: string]: string }
 
   if (admin) {
     res.json({ secretAdminCode: 132345 })
