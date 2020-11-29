@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <div>
       <h1>{message}</h1>
-      <h1>Secret: {secret}</h1>
+      <h1>Simple Routing Secret: {secret}</h1>
       <form>
         <input
           type="text"
