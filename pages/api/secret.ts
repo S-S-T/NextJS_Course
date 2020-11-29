@@ -1,7 +1,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next'
 import jwt from 'jsonwebtoken';
-
+// set up a secret locally...
 const KEY = 'rtyafjdkaslkjfkasjsahdfjhdjfhja';
 
 export default function (req: NextApiRequest, res: NextApiResponse) {
