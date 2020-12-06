@@ -16,6 +16,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+
       return squares[a];
     }
   }
@@ -34,7 +35,6 @@ function Square(props) {
 }
 
 
-
 class Board extends React.Component {
   constructor(props) {
     super(props);
@@ -45,8 +45,10 @@ class Board extends React.Component {
   }
 
   handleClick(i) {
-    const squares = this.state.squares.slice();
+    const squares = this.state.squares;
+    // This is where the X or O gets placed onto the Board's Square
     squares[i] = this.state.xIsNext ? 'X' : 'O';
+    // Once the square is written to the Board, we need to set the State
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
@@ -97,13 +99,22 @@ class Board extends React.Component {
 class Game extends React.Component {
   render() {
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
+      <div>
+        <div>
+          <p>NAME: </p>
+          <input onChange={() => { console.log("name just changed") }}></input>
         </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+        <div className="game">
+          <div className="game-board">
+            <Board />
+          </div>
+          {/* <div>
+          <button onClick={window.location.reload}>RESET</button>
+        </div> */}
+          <div className="game-info">
+            <div>{/* status */}</div>
+            <ol>{/* TODO */}</ol>
+          </div>
         </div>
       </div>
     );
