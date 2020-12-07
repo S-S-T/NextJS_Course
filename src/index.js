@@ -26,7 +26,7 @@ function calculateWinner(squares) {
 function Square(props) {
   return (
     <button
-      className="square"
+      className={props.color ? "square" : "squareRed"}
       onClick={props.onClick}
     >
       {props.value}
@@ -41,6 +41,7 @@ class Board extends React.Component {
     this.state = {
       squares: Array(9).fill(null),
       xIsNext: true,
+      sqColor: true,
     };
   }
 
@@ -48,10 +49,13 @@ class Board extends React.Component {
     const squares = this.state.squares;
     // This is where the X or O gets placed onto the Board's Square
     squares[i] = this.state.xIsNext ? 'X' : 'O';
+    // squares.sqColor = this.state.sqColor ? false : true;
+    console.log(squares.color);
     // Once the square is written to the Board, we need to set the State
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext,
+      sqColor: !this.state.sqColor,
     });
   }
 
@@ -60,6 +64,7 @@ class Board extends React.Component {
       <Square
         value={this.state.squares[i]}
         onClick={() => this.handleClick(i)}
+        color={this.state.sqColor}
       />
     );
   }
@@ -100,17 +105,10 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <p>NAME: </p>
-          <input onChange={() => { console.log("name just changed") }}></input>
-        </div>
         <div className="game">
           <div className="game-board">
             <Board />
           </div>
-          {/* <div>
-          <button onClick={window.location.reload}>RESET</button>
-        </div> */}
           <div className="game-info">
             <div>{/* status */}</div>
             <ol>{/* TODO */}</ol>
